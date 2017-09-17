@@ -1,0 +1,318 @@
+@import 'https://fonts.googleapis.com/css?family=Dosis:300,700|Open+Sans:300,300i,600';
+
+$background-color: #f2f2f2;
+$border-color: #ffffff;
+//$divider-color: #2b7894;
+$divider-color: #2b7894;
+// #D70A53; // debian red
+
+/* Common settings */
+
+* { 
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+	background-color: $background-color;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+h3 {
+	padding-bottom: 20px;
+}
+
+p {
+	margin-bottom: 5px;
+}
+
+ul, nav {
+	list-style: none;
+}
+
+a,
+a:visited {
+    color: $divider-color;
+    text-decoration: none;
+    outline: none;
+	cursor: pointer;
+	opacity: 0.9;
+}
+
+a:hover {
+	opacity: 1;
+	color: #024fff;
+}
+
+section {
+	display: -webkit-flex;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 40px 10vw 60px 10vw;
+}
+
+@media (max-width: 500px) {
+	section {
+	padding-left: 5vw;
+	padding-right: 5vw;
+	}
+}
+
+/* header */
+
+header {
+	display: -webkit-flex;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	height: 50px;
+	color: #ffffff;
+	background-color: $divider-color;
+	padding: 0px 5vw;
+	font-size: 20px;
+
+	i {
+		color: #ffffff;
+	}
+
+	nav {
+		display: -webkit-flex;
+		display: flex;
+
+		li {
+			margin: 0 15px;
+		}
+
+		a,
+		a:visited,
+		a:hover {
+			color: #ffffff;
+		}
+	}
+}
+
+/* dividers between sections */
+
+.main-divider {
+	width: 100%;
+	height: 50px;
+	font-family: 'Dosis', sans-serif;
+	font-size: 28px;
+	line-height: 50px;
+	padding-left: 10vw;
+
+	&#home-divider {
+		background-color: #fffff0;
+	}
+
+	&#details-divider,
+	&#portfolio-divider {
+		background-color: $divider-color;
+		color: lighten($divider-color, 20%);
+	}
+}
+
+/* Logo */
+
+#logo-section {
+	padding-top: 150px;
+	padding-bottom: 150px;
+	flex-direction: column;
+}
+
+.base-initials {
+	font-family: 'Dosis';
+	text-align: center;
+	font-weight: 700;
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.base-name {
+	font-family: 'Dosis';
+	display: inline-block;
+}
+
+#logo {
+	font-size: 42px;
+
+	& .initials {
+		@extend .base-initials;
+		width: 80px;
+		height: 80px;
+		line-height: 65px;
+		border: 5px solid $border-color;
+	}
+
+	& .name {
+		@extend .base-name;
+		line-height: 80px;
+	}
+
+}
+
+#data-stream {
+	position: absolute;
+	width: 1000px;
+	height: 270px;
+	left: -20px;
+	opacity: 0.2;
+}
+
+/* talent summary */
+
+#summary-section {
+	justify-content: space-between;
+}
+
+.talent {
+	width: 200px;
+	border-left: 1px solid $border-color;
+	padding: 10px;
+
+	& :nth-child(1) {
+		font-weight: 600;
+	}
+
+	& p i {
+	font-size: 24px;
+	}
+}
+
+/* details */
+
+#details-section {
+	flex-direction: row;
+}
+
+.details {
+	width: 370px;
+	border-left: 1px solid $border-color;
+	padding: 10px;
+
+	& p.date {
+		font-weight: 600;
+		margin-bottom: 15px;
+	}
+
+	& p.job {
+		font-style: italic;
+		margin-bottom: 15px;
+	}
+
+	& li:before {
+		content: "\2023 \0020";
+	}
+}
+
+/* coding portfolio */
+
+#portfolio-section {
+	flex-direction: row;
+	justify-content: space-around;
+	background-color: #37424b;
+}
+
+.text-desc {
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: #ffffff;
+	height: 100%;
+	opacity: 0;
+	width: 100%;
+	padding: 20px;
+	font-weight: 600;
+
+	& h4 {
+		margin-bottom: 5px;
+	}
+}
+
+.code {
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+	float: left;
+	width: 200px;
+	margin: 20px 10px;
+
+	& img {
+		width: 200px;
+		padding: 4px;
+		border: 1pt solid white;
+		transition: 0.5s;
+	}
+
+	.text-desc {
+		opacity: 0.9;
+		top: -100%;
+		transition: 0.3s;
+		color: #000000;
+		padding: 20px;
+	}
+
+	&:hover img {
+		transform: scale(1.2);
+	}
+	
+	&:hover .text-desc {
+		top: 0;
+	}
+}
+
+/* footer */
+
+footer {
+	@extend section;
+	justify-content: center;
+	height: 300px;
+}
+
+.base-contact-initials {
+	@extend .base-initials;
+	width: 40px;
+	height: 40px;
+	line-height: 35px;
+	border: 3px solid $border-color;
+}
+
+#contacts {
+	font-size: 20px;
+
+	& .initials {
+		@extend .base-contact-initials;
+	}
+
+	& .name {
+		@extend .base-name;
+		line-height: 40px;
+	}
+
+	.avatar {
+		@extend .base-contact-initials;
+		background-image: url("https://s19.postimg.org/wmz7ukyn7/avatar.jpg");
+		background-size: 50px;
+		background-position: top;
+		background-repeat: no-repeat;
+	}
+
+	.social {
+		@extend .base-contact-initials;
+		background-color: #f0efe2;
+	}
+}
+
